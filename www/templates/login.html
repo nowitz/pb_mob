@@ -1,0 +1,23 @@
+<ion-view class="backgroundColor" hide-nav-bar="true" view-title='{{"login" | translate}}' ng-controller="LoginController">
+
+    <ion-content has-header="true" padding="true" overflow-scroll="false">
+        <img class="col text-center" src="./img/logo.png">
+        <form class="list" ng-submit="doLogin()" name="loginForm" novalidate="">
+            <ion-list >
+                <label  class="item item-input">
+                    <span class="input-label">{{"email" | translate}}</span>
+                    <input type="email" name="email" ng-model="loginData.email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">{{"password" | translate}}</span>
+                    <input type="password" name="password" ng-model="loginData.password" required>
+                </label>
+            </ion-list>
+            <div style="height: 2ch;" class="spacer"></div>
+            <button class="button button-balanced button-block icon-left ion-log-in" ng-disabled="loginForm.$invalid" type="submit"> {{"login" | translate}}</button>
+        </form>
+        <!--<button style="margin-top: -25px;" class="button button-positive button-block  icon-left ion-social-facebook-outline" ng-click="loginFacebook()">Facebook</button>-->
+        <a ng-click="modalService.showRegistration()" class="button button-positive button-clear button-block ">{{"registration" | translate}}</a>
+        <!--<a ng-click="forgotPassword()" class="button button-positive button-clear button-block ">{{"forgetPassword" | translate}}</a>-->
+    </ion-content>
+</ion-view>

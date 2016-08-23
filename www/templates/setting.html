@@ -1,0 +1,50 @@
+<ion-view ng-controller="SettingController">
+  <!--  Z DUVODU TOHO ZE SE NEMENIL view-title='{{"administration" | translate}}' PODLE ZVOLENEHO JAZYKA -->
+  <ion-nav-title> {{"setting" | translate}} </ion-nav-title>
+  <!--<ion-nav-buttons side="primary">   TLATICKO V PRAVO KTERY PAK BUDE NA BACK   -->
+    <!--<button class="button" ng-click="doSomething()">-->
+      <!--test-->
+    <!--</button>-->
+  <!--</ion-nav-buttons>-->
+  <ion-content scroll="false" has-header="true" padding="true">
+    <ul class="list">
+      <li class="item item-input item-select">
+        <label>
+          <div class="input-label">
+            {{"selectionPB" | translate}}
+          </div>
+          <select ng-change="selectionPartyboard(partyboard)" ng-model="partyboard" ng-options="partyboard.name for partyboard in partyboards"></select>
+        </label>
+      </li>
+      <li class="item item-input">
+          <span class="input-label">{{"setNick" | translate}}</span>
+          <input ng-readonly="true" style="text-align: center; background-color: white;" ng-value="userFactory.nick" type="text">
+      </li>
+      <li class="item item-input item-select">
+        <label>
+          <div class="input-label">
+            {{"setMessage" | translate}}
+          </div>
+          <select ng-change="selectionTypeMessage(typeMessage)" ng-model="typeMessage" ng-options="typeMessage.name for typeMessage in typeMessages"></select>
+        </label>
+      </li>
+
+      <li class="item item-divider"></li>
+      <li class="item item-input">
+          <div class="input-label">
+        {{"colors" | translate}}
+            </div>
+        <a class="badge" style="width: 10vh; height: 3vh; border: 1px solid black; background-color: {{color.color}};" ng-click="setColor()"> </a>
+      </li>
+
+      <li class="item item-input item-select">
+        <label>
+          <div class="input-label">
+            {{"language" | translate}}
+          </div>
+          <select ng-change="changeLanguage(language.shade)" ng-model="language" ng-options="language.name for language in languages"></select>
+        </label>
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>

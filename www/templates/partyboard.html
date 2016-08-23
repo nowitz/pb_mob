@@ -1,0 +1,56 @@
+<ion-view class="backgroundColor" view-title='{{"partyboard" | translate}}' ng-controller="PartyboardController">
+    <ion-nav-buttons side="right">
+        <button class="button icon ion-gear-a" ng-class="{ 'hideButton': userFactory.permissions === null }"
+                ng-click="data.showAdministration = !data.showAdministration;"></button>
+    </ion-nav-buttons>
+    <ion-content class="contentPB" on-drag-end="historyData($event)" has-bouncing="true" overflow-scroll="false">
+        <ionic-list>
+            <ionic-item class="viewMessage" ng-repeat="msg in result">
+                <!-- class="viewMessage" -->
+                <div class="obalMsg" style="background-color: {{colors.getRgbColor()}};">
+                    <div class="msg">{{msg.nick.toUpperCase()}} - {{ msg.text }}</div> <!-- {{ msg.id_incomming_message}}: -->
+                    <div ng-class="{'hideButton': data.showAdministration===true}" class="buttMsg">
+                        <a class="ion-gear-a button-clear " ng-click="administration(msg)"></a>
+                    </div>
+                </div>
+            </ionic-item>
+        </ionic-list>
+
+        <!--<ion-list show-reorder="data.showAdministration">-->
+        <!--<ion-item class="viewMessage" ng-repeat="msg in result.slice().reverse()">-->
+        <!--{{ msg.id_incomming_message}}:{{msg.nick}} - {{ msg.text }}-->
+        <!--<ion-reorder-button class="ion-gear-a" ng-click="administration(msg)"></ion-reorder-button>-->
+        <!--</ion-item>-->
+        <!--</ion-list>-->
+
+        <li class="backgroundColor" style="text-align: center; list-style-type: none" ng-if="loadingHistory"
+            class="item item-spinner">
+            <ion-spinner icon="android"></ion-spinner>
+        </li>
+        <ion-infinite-scroll on-infinite="loadMore()"
+                             immediate-check="false"
+                             icon="none"
+                             distance="-50px"
+                             style="height:0px">
+        </ion-infinite-scroll>
+
+    </ion-content>
+    <div class="bar bar-footer footerPB" style="background-color: {{colors.getRgbColor()}}">
+        <div class="item-input-inset" style="width: 9999px;">
+            <label class="item-input-wrapper">
+                    <textarea style="width:100%" type="text" placeholder="{{ 'message' | translate }}" maxlength="160"
+                              ng-model="data.message"></textarea>
+            </label>
+
+            <div style="padding-left:8px;">
+                <button class="button button-small" ng-click="send(data.message)"
+                        ng-disabled="data.message.length == 0">
+                    {{ 'smsSend' | translate }}
+                </button>
+                <div style="color:white;">
+                    {{data.message.length}} {{"chars" | translate}}
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-view>

@@ -1,0 +1,76 @@
+<ion-modal-view ng-controller="RegistrationController">
+    <ion-header-bar class="bar-dark">
+        <div class="buttons">
+            <button class="button button-clear" ng-click="modalService.hideRegistration()"><i
+                    class="icon ion-ios-arrow-left"></i>{{"backButton" | translate}}
+            </button>
+        </div>
+        <h1 class="title">{{"registrationForm" | translate}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <form ng-submit="doRegister()" name="registerForm" novalidate>
+
+            <div class="list">
+
+                <label class="item item-input">
+                    <span class="input-label">{{"email" | translate}} <i ng-class="{ 'has-error': registerForm.email.$invalid }" class="error icon ion-android-alert placeholder-icon"></i></span>
+                    <input type="email" name="email" ng-model="registerData.email" maxlength="60" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{"password" | translate}} <i ng-class="{ 'has-error': registerForm.password.$invalid }" class="error icon ion-android-alert placeholder-icon"></i></span>
+                    <input type="password" name="password" ng-model="registerData.password" required maxlength="20">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{"checkPassword" | translate}} <i ng-class="{ 'has-error': registerForm.checkPassword.$invalid}" class="error icon ion-android-alert placeholder-icon"></i></span>
+                    <input type="password" name="checkPassword" ng-model="registerData.checkPassword" required maxlength="20"> <!-- registerForm.checkPassword.$invalid || ( -->
+                </label>
+
+                <label class="item item-divider"></label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{"firstName" | translate}} <i ng-class="{ 'has-error': registerForm.firstName.$invalid }" class="error icon ion-android-alert placeholder-icon"></i></span>
+                    <input type="text" name="firstName" ng-model="registerData.firstName" required>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{"lastName" | translate}} <i ng-class="{ 'has-error': registerForm.lastName.$invalid }" class="error icon ion-android-alert placeholder-icon"></i></span>
+                    <input type="text" name="lastName" ng-model="registerData.lastName" required>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{"nick" | translate}} <i ng-class="{ 'has-error': registerForm.nick.$invalid }" class="error icon ion-android-alert placeholder-icon"></i></span>
+                    <input type="text" name="nick" ng-model="registerData.nick" required>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{"phone" | translate}} <i ng-class="{ 'has-error': registerForm.phone.$invalid }" class="error icon ion-android-alert placeholder-icon"></i></span>
+                    <input type="tel" name="phone" ng-model="registerData.phone" placeholder="776642532" ng-pattern="/^\d{9}$/" maxlength="9" required>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{"birthday" | translate}} <i ng-class="{ 'has-error': registerForm.birthday.$invalid }" class="error icon ion-android-alert placeholder-icon"></i></span>
+                    <input type="date" value="1998-01-01" name="birthday" ng-model="registerData.birthday" required>
+                </label>
+                <!--<label class="item item-input em-gender">-->
+                    <!--<span class="input-label">{{"GENDER" | translate}} <i ng-class="{ 'has-error': !registerData.ge}" class="error icon ion-android-alert placeholder-icon"></i></span>-->
+                    <!--<ion-checkbox class="em-gender-cb" name="ge" ng-model="isMale" ng-change="isMale ? registerData.ge='male' : registerData.ge = 'female'; isFemale = false" ng-checked="registerData.ge === 'male'">{{"MALE" | translate}}</ion-checkbox>-->
+                    <!--<ion-checkbox class="em-gender-cb" name="ge" ng-model="isFemale" ng-change="isFemale ? registerData.ge='female' : registerData.ge = 'male'; isMale = false" ng-checked="registerData.ge === 'female'">{{"FEMALE" | translate}}</ion-checkbox>-->
+                <!--</label>-->
+
+                <!--<label class="item item-input item-select">-->
+                    <!--<span class="input-label">{{"town" | translate}} <i ng-class="{ 'has-error': registerForm.town.$invalid }" class="error icon ion-android-alert placeholder-icon"></i></span>-->
+                    <!--<select required name="town" ng-model="registerData.town">-->
+                        <!--<option ng-repeat="(key, value) in towns" value="{{value.id_town}}">{{value.name}}</option>-->
+                    <!--</select>-->
+                <!--</label>-->
+
+                <!--SUBMIT-->
+                <label class="item">
+                    <button class="button button-block button-balanced" ng-disabled="registerForm.$invalid" type="submit">{{"register" | translate}}</button> <!-- ng-disabled="registerForm.$invalid || !registerData.ge" -->
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>
