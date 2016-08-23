@@ -4,3 +4,16 @@
 node_modules/
 platforms/
 plugins/
+.bowerrc
+.editorconfig
+.gitignore
+bower.json
+config.xml
+gulpfile.js
+hooks/
+ionic.config.json
+less/
+package.json
+resources/
+scss/
+www/
