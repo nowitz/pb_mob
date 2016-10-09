@@ -3,7 +3,7 @@ angular.module('app')
     .controller('ShowController', function ($scope, $state, $ionicPopup, BackButtonFactory, NetworkService) {
 
         /**
-         * Controller pro stránku show.html
+         * Controller pro stranku show.html
          */
 
         $scope.hideGo = function (){
